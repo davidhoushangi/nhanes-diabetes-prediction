@@ -7,6 +7,7 @@ This Python project learns from the **2017–2018 US National Health and Nutriti
 nhanes-diabetes-prediction/
 ├── README.md
 ├── train.py
+├── dashboard.py #visualization
 ├── requirements.txt
 ├── .gitignore
 └── results/
@@ -15,7 +16,7 @@ nhanes-diabetes-prediction/
     └── metrics.json
 ```
 
-## Run it
+## How to Run it
 
 1. Install Python 3.10 or newer.
 2. In this folder, run `python -m pip install -r requirements.txt`.
@@ -23,7 +24,7 @@ nhanes-diabetes-prediction/
 
 The first run downloads three original CDC `.XPT` files into `data/`. Outputs appear in `results/`. Internet access is needed only for the first download.
 
-## How it works
+## How does it work?
 
 - Join demographics (`DEMO_J`), body measures (`BMX_J`), and diabetes questionnaire (`DIQ_J`) on the anonymous survey participant ID `SEQN`.
 - Keep adults aged 20 or older. `DIQ010=1` is the positive class and `DIQ010=2` is the negative class. Exclude borderline, refused, and unknown responses.
@@ -39,7 +40,7 @@ The first run downloads three original CDC `.XPT` files into `data/`. Outputs ap
 
 **Accuracy alone is misleading:** most respondents did not report diabetes. Read the positive-class recall and precision together. The 0.5 classification threshold is an illustration, not a clinical cutoff.
 
-## Important limitations
+## Important limitations!
 
 The outcome is a *self-reported previous diagnosis*, not blood-test-confirmed diabetes; people with undiagnosed diabetes may be in the negative group. Measurements and the report come from the same survey, so the model cannot predict future disease. NHANES uses a complex survey design: this introductory exercise does **not** apply survey weights or estimate population-wide prevalence or performance. A random split within one survey cycle does not demonstrate performance in another year, hospital, or population. Model probabilities should not be interpreted as clinically validated personal risk.
 
